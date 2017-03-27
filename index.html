@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>The Scala.js Tutorial</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Time Series Lab</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+  <link href="assets/css/default.css" rel="stylesheet">
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 <body>
-<!-- Include Scala.js compiled code -->
-<script type="text/javascript" src="target/scala-2.12/scalajs-sandbox-fastopt.js"></script>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Time Series Lab</a>
+      </div>
+      <button type="submit" class="btn btn-primary navbar-btn navbar-left">Upload CSV</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <canvas id="myChart" width="1000px" height="400px"></canvas>
+  </div>
+
+
+  <script>
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+      datasets: [{
+        label: 'apples',
+        data: [12, 19, 3, 17, 6, 3, 7],
+        backgroundColor: "rgba(153,255,51,0.4)"
+      }, {
+        label: 'oranges',
+        data: [2, 29, 5, 5, 2, 3, 10],
+        backgroundColor: "rgba(255,153,0,0.4)"
+      }]
+    }
+  });
+
+  </script>
+
+  <!-- Include Scala.js compiled code -->
+  <script type="text/javascript" src="target/scala-2.12/scalajs-sandbox-fastopt.js"></script>
 </body>
 </html>
