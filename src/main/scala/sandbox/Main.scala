@@ -2,18 +2,22 @@ package sandbox
 
 import org.scalajs.dom
 import dom.document
+import org.scalajs.jquery.jQuery
+
 import scala.scalajs.js.JSApp
 
 
 object Main extends JSApp {
   def main(): Unit = {
-    appendPar(document.body, "Hello world")
+    jQuery(() => setupUI())
   }
 
-  def appendPar(targetNode: dom.Node, text: String): Unit = {
-    val parNode = document.createElement("p")
-    val textNode = document.createTextNode(text)
-    parNode.appendChild(textNode)
-    targetNode.appendChild(parNode)
+  def setupUI(): Unit = {
+    jQuery("#upload-button").click(() => uploadClicked())
+    jQuery("body").append("<p>Hello World</p>")
+  }
+
+  def uploadClicked(): Unit = {
+    jQuery("body").append("<p>You clicked the upload button!</p>")
   }
 }
