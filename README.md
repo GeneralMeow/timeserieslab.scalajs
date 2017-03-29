@@ -1,4 +1,6 @@
-# Sandbox for Scala.js
+# Time Series Lab
+
+Analyze time series.
 
 ```bash
 sbt fastOptJS
