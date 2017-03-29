@@ -8,8 +8,7 @@ enablePlugins(ScalaJSPlugin)
 
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.9.1",
-  "be.doeraene" %%% "scalajs-jquery" % "0.9.1",
-  "com.github.tototoshi" %% "scala-csv" % "1.3.4"
+  "be.doeraene" %%% "scalajs-jquery" % "0.9.1"
 )
 
 // This is an application with a main method

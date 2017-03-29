@@ -3,6 +3,7 @@ package sandbox
 import org.scalajs.jquery.jQuery
 
 import scala.scalajs.js.JSApp
+import scala.scalajs.js.annotation.JSExportTopLevel
 
 
 object Main extends JSApp {
@@ -11,11 +12,15 @@ object Main extends JSApp {
   }
 
   def setupUI(): Unit = {
-    jQuery("#upload-button").click(() => uploadClicked())
-    jQuery("body").append("<p>Hello World</p>")
   }
 
-  def uploadClicked(): Unit = {
-    jQuery("body").append("<p>You clicked the upload button!</p>")
+  @JSExportTopLevel("csvUploaded")
+  def csvUploaded(text: String): Unit = {
+    val data = text.split("\n").tail.map{ line =>
+      val tokens = line.split(",")
+      (tokens(0), tokens(1).toDouble)
+    }
+
+    data.foreach(x => jQuery("body").append("<div>%s: %f</div>".format(x._1, x._2)))
   }
 }
