@@ -7,7 +7,7 @@ import scala.scalajs.js.JSApp
 
 object Main extends JSApp {
   def main(): Unit = {
-    appendPar(document.body, "Test")
+    appendPar(document.body, "Hello world")
   }
 
   def appendPar(targetNode: dom.Node, text: String): Unit = {
