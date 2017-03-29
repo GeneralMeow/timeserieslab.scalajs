@@ -2,6 +2,8 @@ package sandbox
 
 import org.scalajs.jquery.jQuery
 
+import scala.scalajs.js
+import js.JSConverters._
 import scala.scalajs.js.JSApp
 import scala.scalajs.js.annotation.JSExportTopLevel
 
@@ -16,11 +18,12 @@ object Main extends JSApp {
 
   @JSExportTopLevel("csvUploaded")
   def csvUploaded(text: String): Unit = {
+    val replaceData = js.Dynamic.global.replaceData
     val data = text.split("\n").tail.map{ line =>
       val tokens = line.split(",")
       (tokens(0), tokens(1).toDouble)
     }
-
-    data.foreach(x => jQuery("body").append("<div>%s: %f</div>".format(x._1, x._2)))
+    val (x, y) = data.unzip
+    replaceData(x.toJSArray, y.toJSArray)
   }
 }
