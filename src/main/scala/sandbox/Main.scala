@@ -1,7 +1,5 @@
 package sandbox
 
-import org.scalajs.dom
-import dom.document
 import org.scalajs.jquery.jQuery
 
 import scala.scalajs.js.JSApp

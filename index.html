@@ -26,6 +26,13 @@
     <canvas id="myChart" width="1000px" height="400px"></canvas>
   </div>
 
+  <h1>Text File Reader</h1>
+  <div>
+    Select a text file:
+    <input type="file" id="fileInput">
+  </div>
+  <pre id="fileDisplayArea"><pre>
+
 
   <script>
   var ctx = document.getElementById('myChart').getContext('2d');
@@ -44,6 +51,28 @@
       }]
     }
   });
+
+  window.onload = function() {
+          var fileInput = document.getElementById('fileInput');
+          var fileDisplayArea = document.getElementById('fileDisplayArea');
+
+          fileInput.addEventListener('change', function(e) {
+              var file = fileInput.files[0];
+              var textType = /text.*/;
+
+              if (file.type.match(textType)) {
+                  var reader = new FileReader();
+
+                  reader.onload = function(e) {
+                      fileDisplayArea.innerText = reader.result;
+                  }
+
+                  reader.readAsText(file);
+              } else {
+                  fileDisplayArea.innerText = "File not supported!";
+              }
+          });
+  }
 
   </script>
 
