@@ -1,4 +1,4 @@
-package sandbox
+package timeserieslab
 
 import org.scalajs.jquery.jQuery
 

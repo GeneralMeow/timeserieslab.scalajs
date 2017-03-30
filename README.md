@@ -3,6 +3,6 @@
 Analyze time series.
 
 ```bash
-sbt fastOptJS
+sbt buildjs
 firefox index.html
 ```
